@@ -1,0 +1,20 @@
+services:
+  db:
+    container_name: postgres-spring-learningv1
+    image: postgres:16
+    environment:
+      POSTGRES_USER: ${db.user}
+      POSTGRES_PASSWORD: ${db.password}
+    volumes:
+      - db:/var/lib/postgresql/data
+    ports:
+      - "5332:5432"
+    networks:
+      - db
+    restart: unless-stopped
+
+networks:
+  db:
+    driver: bridge
+volumes:
+  db:

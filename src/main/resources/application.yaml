@@ -1,3 +1,24 @@
 spring:
+  config:
+    import: secrets.yml
   application:
     name: FirstSpringBootProject
+  datasource:
+    url: jdbc:postgresql://localhost:5332/naavish
+    username: ${db.user}
+    password: ${db.password}  #for testing only
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      #line below is optional
+      ddl-auto: create-drop
+
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+
+
+
